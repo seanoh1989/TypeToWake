@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Button;
 
+import java.util.Random;
+
 public class AlarmDetailsActivity extends Activity {
 
     private AlarmDBHelper dbHelper = new AlarmDBHelper(this);
@@ -26,6 +28,7 @@ public class AlarmDetailsActivity extends Activity {
 
     private TimePicker timePicker;
     private EditText edtName;
+    private EditText str;
 
     private CustomSwitch btnMonday;
     private CustomSwitch btnTuesday;
@@ -40,6 +43,9 @@ public class AlarmDetailsActivity extends Activity {
     private TextView txtToneSelection;
 
     private Button saveButton;
+    private Button randomButton;
+
+    private String [] strGenerator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +72,24 @@ public class AlarmDetailsActivity extends Activity {
 
         txtToneSelection = (TextView) findViewById(R.id.alarm_label_tone_selection);
 
+        str = (EditText) findViewById(R.id.editText2);
         saveButton = (Button) findViewById(R.id.saveButton);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+            }
+        });
+        strGenerator = new String[3];
+        strGenerator[0] = "If you don’t want to type this, the easiest way to turn the alarm off is to throw your phone as hard as you can";
+        strGenerator[1] = "If you still want to sleep one more minute, think about how much Bill Gates will make during that minute";
+        strGenerator[2] = "It's time to go to class. Bring your iClicker with you";
+
+        randomButton = (Button) findViewById(R.id.randomBtn);
+        randomButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                str.setText(returnStr());
             }
         });
 
@@ -179,5 +198,23 @@ public class AlarmDetailsActivity extends Activity {
 
         alarmDetails.isEnabled = true;
     }
+
+    private String returnStr() {
+        int rand = randInt(0, 2);
+        return strGenerator[rand];
+    }
+
+    public static int randInt(int min, int max) {
+
+        // Usually this can be a field rather than a method variable
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
+
 
 }
