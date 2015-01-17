@@ -23,6 +23,7 @@ public class AlarmDBHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_ALARM = "CREATE TABLE " + Alarm.TABLE_NAME + " (" +
             Alarm._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             Alarm.COLUMN_NAME_ALARM_NAME + " TEXT," +
+            Alarm.COLUMN_NAME_ALARM_PHRASE + " TEXT," +
             Alarm.COLUMN_NAME_ALARM_TIME_HOUR + " INTEGER," +
             Alarm.COLUMN_NAME_ALARM_TIME_MINUTE + " INTEGER," +
             Alarm.COLUMN_NAME_ALARM_REPEAT_DAYS + " TEXT," +

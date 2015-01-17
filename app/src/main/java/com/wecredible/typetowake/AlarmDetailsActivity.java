@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Button;
 
 public class AlarmDetailsActivity extends Activity {
 
@@ -38,8 +37,6 @@ public class AlarmDetailsActivity extends Activity {
     private CustomSwitch chkWeekly;
 
     private TextView txtToneSelection;
-
-    private Button saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +62,6 @@ public class AlarmDetailsActivity extends Activity {
         btnSaturday = (CustomSwitch) findViewById(R.id.sat_button);
 
         txtToneSelection = (TextView) findViewById(R.id.alarm_label_tone_selection);
-
-        saveButton = (Button) findViewById(R.id.saveButton);
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });
 
         long id = getIntent().getExtras().getLong("id");
 

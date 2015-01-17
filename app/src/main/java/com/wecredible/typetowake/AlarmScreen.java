@@ -46,6 +46,7 @@ public class AlarmScreen extends Activity {
         this.setContentView(R.layout.activity_alarm_screen);
 
         String name = getIntent().getStringExtra(AlarmManagerHelper.NAME);
+        String saved_phrase = getIntent().getStringExtra(AlarmManagerHelper.PHRASE);
         int timeHour = getIntent().getIntExtra(AlarmManagerHelper.TIME_HOUR, 0);
         int timeMinute = getIntent().getIntExtra(AlarmManagerHelper.TIME_MINUTE, 0);
         String tone = getIntent().getStringExtra(AlarmManagerHelper.TONE);
@@ -61,7 +62,7 @@ public class AlarmScreen extends Activity {
 
         final EditText editText = (EditText) findViewById(R.id.editText);
         editText.setText("");
-        final SpannableString sb = new SpannableString("It's time to wake up");
+        final SpannableString sb = new SpannableString(saved_phrase);
         Button dismissButton = (Button) findViewById(R.id.alarm_screen_button);
         int index = 0;
         editText.setOnKeyListener(new View.OnKeyListener() {

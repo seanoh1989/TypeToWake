@@ -19,6 +19,7 @@ public class AlarmManagerHelper extends BroadcastReceiver {
 
     public static final String ID = "id";
     public static final String NAME = "name";
+    public static final String PHRASE = "phrase";
     public static final String TIME_HOUR = "timeHour";
     public static final String TIME_MINUTE = "timeMinute";
     public static final String TONE = "alarmTone";

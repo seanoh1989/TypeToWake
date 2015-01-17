@@ -6,6 +6,6 @@
         android:id="@+id/action_save_alarm_details"
         android:orderInCategory="100"
         android:icon="@drawable/action_save"
-        app:showAsAction="always"/>
+        android:showAsAction="always"/>
 
 </menu>
