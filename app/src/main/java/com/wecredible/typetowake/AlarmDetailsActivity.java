@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Button;
-
 import java.util.Random;
 
 public class AlarmDetailsActivity extends Activity {
@@ -28,7 +27,7 @@ public class AlarmDetailsActivity extends Activity {
 
     private TimePicker timePicker;
     private EditText edtName;
-    private EditText str;
+    private EditText edtPhrase;
 
     private CustomSwitch btnMonday;
     private CustomSwitch btnTuesday;
@@ -42,7 +41,6 @@ public class AlarmDetailsActivity extends Activity {
 
     private TextView txtToneSelection;
 
-    private Button saveButton;
     private Button randomButton;
 
     private String [] strGenerator;
@@ -60,6 +58,7 @@ public class AlarmDetailsActivity extends Activity {
 
         timePicker = (TimePicker) findViewById(R.id.alarm_details_time_picker);
         edtName = (EditText) findViewById(R.id.alarm_details_name);
+        edtPhrase = (EditText) findViewById(R.id.editText2);
         chkWeekly = (CustomSwitch) findViewById(R.id.alarm_details_repeat_weekly);
 
         btnSunday = (CustomSwitch) findViewById(R.id.sun_button);
@@ -72,16 +71,8 @@ public class AlarmDetailsActivity extends Activity {
 
         txtToneSelection = (TextView) findViewById(R.id.alarm_label_tone_selection);
 
-        str = (EditText) findViewById(R.id.editText2);
-        saveButton = (Button) findViewById(R.id.saveButton);
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });
         strGenerator = new String[3];
-        strGenerator[0] = "If you don’t want to type this, the easiest way to turn the alarm off is to throw your phone as hard as you can";
+        strGenerator[0] = "If you don't want to type this, the easiest way to turn the alarm off is to throw your phone as hard as you can";
         strGenerator[1] = "If you still want to sleep one more minute, think about how much Bill Gates will make during that minute";
         strGenerator[2] = "It's time to go to class. Bring your iClicker with you";
 
@@ -89,7 +80,7 @@ public class AlarmDetailsActivity extends Activity {
         randomButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                str.setText(returnStr());
+                edtPhrase.setText(returnStr());
             }
         });
 
@@ -104,6 +95,7 @@ public class AlarmDetailsActivity extends Activity {
             timePicker.setCurrentHour(alarmDetails.timeHour);
 
             edtName.setText(alarmDetails.name);
+            edtPhrase.setText(alarmDetails.phrase);
 
             chkWeekly.setChecked(alarmDetails.repeatWeekly);
 
@@ -186,6 +178,7 @@ public class AlarmDetailsActivity extends Activity {
         alarmDetails.timeMinute = timePicker.getCurrentMinute().intValue();
         alarmDetails.timeHour = timePicker.getCurrentHour().intValue();
         alarmDetails.name = edtName.getText().toString();
+        alarmDetails.phrase = edtPhrase.getText().toString();
         alarmDetails.repeatWeekly = chkWeekly.isChecked();
 
         alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, btnSunday.isChecked());

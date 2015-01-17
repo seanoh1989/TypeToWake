@@ -54,6 +54,7 @@ public class AlarmDBHelper extends SQLiteOpenHelper {
         AlarmModel model = new AlarmModel();
         model.id = c.getLong(c.getColumnIndex(Alarm._ID));
         model.name = c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_NAME));
+        model.phrase = c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_PHRASE));
         model.timeHour = c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TIME_HOUR));
         model.timeMinute = c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TIME_MINUTE));
         model.repeatWeekly = c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_REPEAT_WEEKLY)) == 0 ? false : true;
@@ -71,6 +72,7 @@ public class AlarmDBHelper extends SQLiteOpenHelper {
     private ContentValues populateContent(AlarmModel model) {
         ContentValues values = new ContentValues();
         values.put(Alarm.COLUMN_NAME_ALARM_NAME, model.name);
+        values.put(Alarm.COLUMN_NAME_ALARM_PHRASE, model.phrase);
         values.put(Alarm.COLUMN_NAME_ALARM_TIME_HOUR, model.timeHour);
         values.put(Alarm.COLUMN_NAME_ALARM_TIME_MINUTE, model.timeMinute);
         values.put(Alarm.COLUMN_NAME_ALARM_REPEAT_WEEKLY, model.repeatWeekly);

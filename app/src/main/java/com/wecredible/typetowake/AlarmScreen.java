@@ -4,9 +4,9 @@ package com.wecredible.typetowake;
  * Created by Sean on 1/16/15.
  */
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -17,16 +17,12 @@ import android.os.PowerManager.WakeLock;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -42,11 +38,15 @@ public class AlarmScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+
+
         //Setup layout
         this.setContentView(R.layout.activity_alarm_screen);
 
         String name = getIntent().getStringExtra(AlarmManagerHelper.NAME);
         String saved_phrase = getIntent().getStringExtra(AlarmManagerHelper.PHRASE);
+
         int timeHour = getIntent().getIntExtra(AlarmManagerHelper.TIME_HOUR, 0);
         int timeMinute = getIntent().getIntExtra(AlarmManagerHelper.TIME_MINUTE, 0);
         String tone = getIntent().getStringExtra(AlarmManagerHelper.TONE);
@@ -58,13 +58,12 @@ public class AlarmScreen extends Activity {
         tvTime.setText(String.format("%02d : %02d", timeHour, timeMinute));
 
         final TextView phrase = (TextView) findViewById(R.id.phrase);
-        phrase.setText("It's time to wake up");
+        phrase.setText(saved_phrase);
 
         final EditText editText = (EditText) findViewById(R.id.editText);
         editText.setText("");
         final SpannableString sb = new SpannableString(saved_phrase);
-        Button dismissButton = (Button) findViewById(R.id.alarm_screen_button);
-        int index = 0;
+
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

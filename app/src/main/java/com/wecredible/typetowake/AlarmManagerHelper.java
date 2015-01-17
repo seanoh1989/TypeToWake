@@ -113,6 +113,7 @@ public class AlarmManagerHelper extends BroadcastReceiver {
         Intent intent = new Intent(context, AlarmService.class);
         intent.putExtra(ID, model.id);
         intent.putExtra(NAME, model.name);
+        intent.putExtra(PHRASE, model.phrase);
         intent.putExtra(TIME_HOUR, model.timeHour);
         intent.putExtra(TIME_MINUTE, model.timeMinute);
         intent.putExtra(TONE, model.alarmTone.toString());

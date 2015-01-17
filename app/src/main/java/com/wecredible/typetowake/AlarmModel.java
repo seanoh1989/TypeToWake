@@ -22,6 +22,7 @@ public class AlarmModel {
     public boolean repeatWeekly;
     public Uri alarmTone;
     public String name;
+    public String phrase;
     public boolean isEnabled;
 
     public AlarmModel() {

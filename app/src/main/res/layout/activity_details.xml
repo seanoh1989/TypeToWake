@@ -236,16 +236,6 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/alarm_ringtone_container" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/saveButton"
-            android:layout_below="@+id/alarm_ringtone_container"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:text="@string/details_save"/>
-
-
 
     </RelativeLayout>
 
