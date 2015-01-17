@@ -30,12 +30,21 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:ems="10"
             android:hint="@string/details_alarm_name" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2"
+            android:layout_below="@id/alarm_details_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:ems="10"
+            android:hint="Enter the String you want to type..."/>
 
         <View
             android:id="@+id/divider2"
             style="@style/Divider"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/alarm_details_name" />
+            android:layout_below="@+id/editText2" />
 
         <com.wecredible.typetowake.CustomSwitch
             android:id="@+id/alarm_details_repeat_weekly"
@@ -47,6 +56,16 @@
             android:checked="true"
             android:text="@string/details_repeat_weekly"
             />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random"
+            android:id="@+id/randomBtn"
+            android:layout_below="@id/alarm_details_name"
+            android:layout_toRightOf="@id/editText2"
+            android:layout_above="@id/alarm_details_repeat_weekly"
+            android:layout_alignParentRight="true"/>
 
         <View
             android:id="@+id/divider1"
@@ -187,12 +206,6 @@
 
             </RelativeLayout>
 
-            <View
-                android:id="@+id/divider4"
-                style="@style/Divider"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/alarm_details_repeat_saturday" />
-
             <TextView
                 android:id="@+id/alarm_label_tone"
                 android:layout_width="wrap_content"
@@ -209,6 +222,12 @@
                 android:text="@string/details_alarm_tone_default"
                 android:textSize="14sp" />
 
+            <View
+                android:id="@+id/divider4"
+                style="@style/Divider"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/alarm_details_repeat_saturday" />
+
         </LinearLayout>
 
         <View
@@ -216,6 +235,17 @@
             style="@style/Divider"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/alarm_ringtone_container" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveButton"
+            android:layout_below="@+id/alarm_ringtone_container"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/details_save"/>
+
+
 
     </RelativeLayout>
 
