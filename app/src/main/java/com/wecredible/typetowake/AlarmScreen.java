@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class AlarmScreen extends Activity {
@@ -46,13 +47,23 @@ public class AlarmScreen extends Activity {
         TextView tvTime = (TextView) findViewById(R.id.alarm_screen_time);
         tvTime.setText(String.format("%02d : %02d", timeHour, timeMinute));
 
+        final TextView phrase = (TextView) findViewById(R.id.phrase);
+        phrase.setText("It's time to wake up");
+
+        final EditText editText = (EditText) findViewById(R.id.editText);
+
         Button dismissButton = (Button) findViewById(R.id.alarm_screen_button);
         dismissButton.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                mPlayer.stop();
-                finish();
+                Log.v(TAG, "Phrase: " + phrase.toString());
+                Log.v(TAG, "Sting to Check: " + editText.toString());
+                if(phrase.toString().equals(editText.toString())) {
+
+                    mPlayer.stop();
+                    finish();
+                }
             }
         });
 
