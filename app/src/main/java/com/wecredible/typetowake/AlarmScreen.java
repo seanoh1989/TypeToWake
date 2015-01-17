@@ -5,6 +5,8 @@ package com.wecredible.typetowake;
  */
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -12,7 +14,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
@@ -28,7 +38,6 @@ public class AlarmScreen extends Activity {
     private MediaPlayer mPlayer;
 
     private static final int WAKELOCK_TIMEOUT = 60 * 1000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,20 +60,67 @@ public class AlarmScreen extends Activity {
         phrase.setText("It's time to wake up");
 
         final EditText editText = (EditText) findViewById(R.id.editText);
-
+        editText.setText("");
+        final SpannableString sb = new SpannableString("It's time to wake up");
         Button dismissButton = (Button) findViewById(R.id.alarm_screen_button);
-        dismissButton.setOnClickListener(new OnClickListener() {
+        int index = 0;
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_DEL && editText.getText().toString().length() < phrase.getText().toString().length()) {
+                    final ForegroundColorSpan black = new ForegroundColorSpan(Color.BLACK);
+                    sb.setSpan(black, editText.getText().toString().length(), editText.getText().toString().length() + 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+                    phrase.setText(sb);
+                }
+                return false;
+            }
+        });
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
 
             @Override
-            public void onClick(View view) {
-                Log.v(TAG, "Phrase: " + phrase.getText().toString());
-                Log.v(TAG, "Sting to Check: " + editText.getText().toString());
-                if(phrase.toString().equals(editText.toString())) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                    mPlayer.stop();
-                    finish();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Log.v(TAG, "Phrase: " + phrase.getText().toString());
+                Log.v(TAG, "Sting to Check: " + editText.getText().toString());
+                int curPos = editText.getText().toString().length();
+                //Log.v(TAG, "String: " + a);
+                Log.v(TAG, "length: " + editText.getText().toString().length());
+                //  Log.v(TAG, "char: " + a.toString().substring(curPos - 1, curPos));
+                //  Log.v(TAG, "char1: " + phrase.getText().toString().substring(curPos - 1, curPos));
+                int i;
+
+                final ForegroundColorSpan blue = new ForegroundColorSpan(Color.BLUE);
+                final ForegroundColorSpan red = new ForegroundColorSpan(Color.RED);
+                if (editText.getText().toString().length() <= phrase.getText().toString().length()) {
+                    for (i = 0; i < curPos; i++) {
+                        Log.v(TAG, "char1: " + editText.getText().toString().charAt(i));
+                        Log.v(TAG, "char2: " + phrase.getText().toString().charAt(i));
+                        if (editText.getText().toString().charAt(i) == phrase.getText().toString().charAt(i)) {
+                            sb.setSpan(blue, i, i + 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+
+
+                        } else {
+                            sb.setSpan(red, i, i + 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+                        }
+                    }
+
+                    phrase.setText(sb);
+                    if (phrase.getText().toString().equals(editText.getText().toString())) {
+
+                        mPlayer.stop();
+                        finish();
+                    }
                 }
             }
+
         });
 
         //Play alarm tone
