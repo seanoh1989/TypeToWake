@@ -57,8 +57,8 @@ public class AlarmScreen extends Activity {
 
             @Override
             public void onClick(View view) {
-                Log.v(TAG, "Phrase: " + phrase.toString());
-                Log.v(TAG, "Sting to Check: " + editText.toString());
+                Log.v(TAG, "Phrase: " + phrase.getText().toString());
+                Log.v(TAG, "Sting to Check: " + editText.getText().toString());
                 if(phrase.toString().equals(editText.toString())) {
 
                     mPlayer.stop();
