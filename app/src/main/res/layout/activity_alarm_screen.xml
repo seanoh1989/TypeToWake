@@ -42,4 +42,20 @@
         android:text="Dismiss"
         android:textSize="38dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="This is the sentence"
+        android:id="@+id/phrase"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/phrase"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
