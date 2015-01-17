@@ -71,10 +71,16 @@ public class AlarmDetailsActivity extends Activity {
 
         txtToneSelection = (TextView) findViewById(R.id.alarm_label_tone_selection);
 
-        strGenerator = new String[3];
+        strGenerator = new String[9];
         strGenerator[0] = "If you don't want to type this, the easiest way to turn the alarm off is to throw your phone as hard as you can";
         strGenerator[1] = "If you still want to sleep one more minute, think about how much Bill Gates will make during that minute";
         strGenerator[2] = "It's time to go to class. Bring your iClicker with you";
+        strGenerator[3] = "Do you want to know who you are? Don't ask. Act! Action will delineate and define you.";
+        strGenerator[4] = "Setting goals is the first step in turning the invisible into the visible.";
+        strGenerator[5] = "Change your life today. Don't gamble on the future, act now, without delay.";
+        strGenerator[6] = "Never, never, never give up.";
+        strGenerator[7] = "Things do not happen. Things are made to happen.";
+        strGenerator[8] = "If you fell down yesterday, stand up today.";
 
         randomButton = (Button) findViewById(R.id.randomBtn);
         randomButton.setOnClickListener(new OnClickListener() {
@@ -193,7 +199,7 @@ public class AlarmDetailsActivity extends Activity {
     }
 
     private String returnStr() {
-        int rand = randInt(0, 2);
+        int rand = randInt(0, 8);
         return strGenerator[rand];
     }
 

@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
-        android:text="Alarm!"
+        android:text="Type to dismiss!"
         android:textSize="38dp" />
 
     <TextView
@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:layout_below="@+id/phrase"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:ems="10"/>
 
 </RelativeLayout>
