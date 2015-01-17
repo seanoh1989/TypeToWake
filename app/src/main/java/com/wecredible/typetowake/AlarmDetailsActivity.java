@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Button;
 
 public class AlarmDetailsActivity extends Activity {
 
@@ -25,15 +26,20 @@ public class AlarmDetailsActivity extends Activity {
 
     private TimePicker timePicker;
     private EditText edtName;
+
+    private CustomSwitch btnMonday;
+    private CustomSwitch btnTuesday;
+    private CustomSwitch btnWednesday;
+    private CustomSwitch btnThursday;
+    private CustomSwitch btnFriday;
+    private CustomSwitch btnSaturday;
+    private CustomSwitch btnSunday;
+
     private CustomSwitch chkWeekly;
-    private CustomSwitch chkSunday;
-    private CustomSwitch chkMonday;
-    private CustomSwitch chkTuesday;
-    private CustomSwitch chkWednesday;
-    private CustomSwitch chkThursday;
-    private CustomSwitch chkFriday;
-    private CustomSwitch chkSaturday;
+
     private TextView txtToneSelection;
+
+    private Button saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +49,30 @@ public class AlarmDetailsActivity extends Activity {
 
         setContentView(R.layout.activity_details);
 
-        getActionBar().setTitle("Create New Alarm");
+        getActionBar().setTitle("Create A New Alarm");
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         timePicker = (TimePicker) findViewById(R.id.alarm_details_time_picker);
         edtName = (EditText) findViewById(R.id.alarm_details_name);
         chkWeekly = (CustomSwitch) findViewById(R.id.alarm_details_repeat_weekly);
-        chkSunday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_sunday);
-        chkMonday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_monday);
-        chkTuesday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_tuesday);
-        chkWednesday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_wednesday);
-        chkThursday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_thursday);
-        chkFriday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_friday);
-        chkSaturday = (CustomSwitch) findViewById(R.id.alarm_details_repeat_saturday);
+
+        btnSunday = (CustomSwitch) findViewById(R.id.sun_button);
+        btnMonday = (CustomSwitch) findViewById(R.id.mon_button);
+        btnTuesday = (CustomSwitch) findViewById(R.id.tue_button);
+        btnWednesday = (CustomSwitch) findViewById(R.id.wed_button);
+        btnThursday = (CustomSwitch) findViewById(R.id.thu_button);
+        btnFriday = (CustomSwitch) findViewById(R.id.fri_button);
+        btnSaturday = (CustomSwitch) findViewById(R.id.sat_button);
+
         txtToneSelection = (TextView) findViewById(R.id.alarm_label_tone_selection);
+
+        saveButton = (Button) findViewById(R.id.saveButton);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                
+            }
+        });
 
         long id = getIntent().getExtras().getLong("id");
 
@@ -71,13 +87,14 @@ public class AlarmDetailsActivity extends Activity {
             edtName.setText(alarmDetails.name);
 
             chkWeekly.setChecked(alarmDetails.repeatWeekly);
-            chkSunday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.SUNDAY));
-            chkMonday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.MONDAY));
-            chkTuesday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.TUESDAY));
-            chkWednesday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.WEDNESDAY));
-            chkThursday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.THURSDAY));
-            chkFriday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.FRDIAY));
-            chkSaturday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.SATURDAY));
+
+            btnSunday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.SUNDAY));
+            btnMonday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.MONDAY));
+            btnTuesday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.TUESDAY));
+            btnWednesday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.WEDNESDAY));
+            btnThursday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.THURSDAY));
+            btnFriday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.FRIDAY));
+            btnSaturday.setChecked(alarmDetails.getRepeatingDay(AlarmModel.SATURDAY));
 
             txtToneSelection.setText(RingtoneManager.getRingtone(this, alarmDetails.alarmTone).getTitle(this));
         }
@@ -151,13 +168,15 @@ public class AlarmDetailsActivity extends Activity {
         alarmDetails.timeHour = timePicker.getCurrentHour().intValue();
         alarmDetails.name = edtName.getText().toString();
         alarmDetails.repeatWeekly = chkWeekly.isChecked();
-        alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, chkSunday.isChecked());
-        alarmDetails.setRepeatingDay(AlarmModel.MONDAY, chkMonday.isChecked());
-        alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, chkTuesday.isChecked());
-        alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, chkWednesday.isChecked());
-        alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, chkThursday.isChecked());
-        alarmDetails.setRepeatingDay(AlarmModel.FRDIAY, chkFriday.isChecked());
-        alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, chkSaturday.isChecked());
+
+        alarmDetails.setRepeatingDay(AlarmModel.SUNDAY, btnSunday.isChecked());
+        alarmDetails.setRepeatingDay(AlarmModel.MONDAY, btnMonday.isChecked());
+        alarmDetails.setRepeatingDay(AlarmModel.TUESDAY, btnTuesday.isChecked());
+        alarmDetails.setRepeatingDay(AlarmModel.WEDNESDAY, btnWednesday.isChecked());
+        alarmDetails.setRepeatingDay(AlarmModel.THURSDAY, btnThursday.isChecked());
+        alarmDetails.setRepeatingDay(AlarmModel.FRIDAY, btnFriday.isChecked());
+        alarmDetails.setRepeatingDay(AlarmModel.SATURDAY, btnSaturday.isChecked());
+
         alarmDetails.isEnabled = true;
     }
 
