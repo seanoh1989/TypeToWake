@@ -15,17 +15,18 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 @SuppressLint("NewApi")
 public class CustomSwitch extends FrameLayout {
 
     private TextView label;
-    private CompoundButton button;
+    private ToggleButton button;
 
     public CustomSwitch(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        //Initalise and configure view layout
+        //Initialize and configure view layout
         RelativeLayout layout = new RelativeLayout(context);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layout.setLayoutParams(layoutParams);
@@ -40,12 +41,17 @@ public class CustomSwitch extends FrameLayout {
 
         layout.setBackgroundResource(R.drawable.view_touch_selector);
 
-        //Initalise and configure compound button
+        //Initialize and configure compound button
+        button = new ToggleButton(context);
+
+
+        /*
         if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             button = new Switch(context);
         } else {
             button = new CheckBox(context);
-        }
+        }*/
+
         button.setId(1);
         button.setText("");
 
@@ -56,7 +62,7 @@ public class CustomSwitch extends FrameLayout {
         buttonParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         buttonParams.addRule(RelativeLayout.ALIGN_RIGHT, 2);
 
-        //Initalise and configure button label
+        //Initialize and configure button label
         label = new TextView(context);
         label.setId(2);
 

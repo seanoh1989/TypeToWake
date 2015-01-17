@@ -6,13 +6,16 @@
 
     <string name="details_alarm_name">Alarm Name</string>
 	<string name="details_repeat_weekly">Repeat Weekly</string>
-	<string name="details_sunday">Sunday</string>
-	<string name="details_monday">Monday</string>
-	<string name="details_tuesday">Tuesday</string>
-	<string name="details_wednesday">Wednesday</string>
-	<string name="details_thursday">Thursday</string>
-	<string name="details_friday">Friday</string>
-	<string name="details_saturday">Saturday</string>
+	<string name="details_sunday">SUN</string>
+	<string name="details_monday">MON</string>
+	<string name="details_tuesday">TUE</string>
+	<string name="details_wednesday">WED</string>
+	<string name="details_thursday">THU</string>
+	<string name="details_friday">FRI</string>
+	<string name="details_saturday">SAT</string>
+
+    <string name="details_save">Save</string>
+
 	<string name="details_alarm_tone">Alarm Tone</string>
 	<string name="details_alarm_tone_default">Select an alarm tone</string>
 	

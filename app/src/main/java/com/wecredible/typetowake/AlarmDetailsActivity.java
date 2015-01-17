@@ -70,7 +70,7 @@ public class AlarmDetailsActivity extends Activity {
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                
+
             }
         });
 

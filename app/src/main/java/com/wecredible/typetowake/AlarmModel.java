@@ -12,7 +12,7 @@ public class AlarmModel {
     public static final int TUESDAY = 2;
     public static final int WEDNESDAY = 3;
     public static final int THURSDAY = 4;
-    public static final int FRDIAY = 5;
+    public static final int FRIDAY = 5;
     public static final int SATURDAY = 6;
 
     public long id = -1;

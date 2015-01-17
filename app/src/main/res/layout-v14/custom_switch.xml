@@ -15,14 +15,14 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true" />
 
-        <TextView
+        <!--TextView
             android:id="@+id/custom_switch_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/custom_switch_button"
             android:layout_alignBottom="@+id/custom_switch_button"
             android:layout_alignParentLeft="true"
-            android:text="default" />
+            android:text="default" /-->
     
     </RelativeLayout>
     

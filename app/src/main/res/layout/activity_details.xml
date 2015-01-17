@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
         android:paddingTop="16dp"
         tools:context=".AlarmDetailsActivity" >
 
@@ -45,98 +45,153 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/divider2"
             android:checked="true"
-            android:text="@string/details_repeat_weekly" />
-        
+            android:text="@string/details_repeat_weekly"
+            />
+
         <View
             android:id="@+id/divider1"
             style="@style/Divider"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/alarm_details_repeat_weekly" />
 
-        <com.wecredible.typetowake.CustomSwitch
-            android:id="@+id/alarm_details_repeat_sunday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/divider1"
-            android:checked="true"
-            android:text="@string/details_sunday" />
-
-        <com.wecredible.typetowake.CustomSwitch
-            android:id="@+id/alarm_details_repeat_monday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/alarm_details_repeat_sunday"
-            android:layout_below="@+id/alarm_details_repeat_sunday"
-            android:checked="true"
-            android:text="@string/details_monday" />
-
-        <com.wecredible.typetowake.CustomSwitch
-            android:id="@+id/alarm_details_repeat_tuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/alarm_details_repeat_monday"
-            android:layout_below="@+id/alarm_details_repeat_monday"
-            android:checked="true"
-            android:text="@string/details_tuesday" />
-        
-        <com.wecredible.typetowake.CustomSwitch
-            android:id="@+id/alarm_details_repeat_wednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/alarm_details_repeat_tuesday"
-            android:layout_below="@+id/alarm_details_repeat_tuesday"
-            android:checked="true"
-            android:text="@string/details_wednesday" />
-
-        <com.wecredible.typetowake.CustomSwitch
-            android:id="@+id/alarm_details_repeat_thursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/alarm_details_repeat_wednesday"
-            android:layout_below="@+id/alarm_details_repeat_wednesday"
-            android:checked="true"
-            android:text="@string/details_thursday" />
-
-        <com.wecredible.typetowake.CustomSwitch
-            android:id="@+id/alarm_details_repeat_friday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/alarm_details_repeat_thursday"
-            android:layout_below="@+id/alarm_details_repeat_thursday"
-            android:checked="true"
-            android:text="@string/details_friday" />
-
-        <com.wecredible.typetowake.CustomSwitch
-            android:id="@+id/alarm_details_repeat_saturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/alarm_details_repeat_friday"
-            android:layout_below="@+id/alarm_details_repeat_friday"
-            android:checked="true"
-            android:text="@string/details_saturday" />
-        
-        <View
-            android:id="@+id/divider4"
-            style="@style/Divider"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/alarm_details_repeat_saturday" />
-
         <LinearLayout
             android:id="@+id/alarm_ringtone_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/divider4"
             android:background="@drawable/view_touch_selector"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:layout_below="@+id/alarm_details_repeat_weekly"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" >
+
+            <RelativeLayout
+                android:id="@+id/alarm_details_day_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/sun_label"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/details_sunday" />
+
+                <TextView
+                    android:id="@+id/mon_label"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/details_monday"
+                    android:layout_toRightOf="@id/sun_label"/>
+
+                <TextView
+                    android:id="@+id/tue_label"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/details_tuesday"
+                    android:layout_toRightOf="@id/mon_label"/>
+
+                <TextView
+                    android:id="@+id/wed_label"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/details_wednesday"
+                    android:layout_toRightOf="@id/tue_label"/>
+
+                <TextView
+                    android:id="@+id/thu_label"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/details_thursday"
+                    android:layout_toRightOf="@id/wed_label"/>
+
+                <TextView
+                    android:id="@+id/fri_label"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/details_friday"
+                    android:layout_toRightOf="@id/thu_label"/>
+
+                <TextView
+                    android:id="@+id/sat_label"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:gravity="center"
+                    android:text="@string/details_saturday"
+                    android:layout_toRightOf="@id/fri_label"/>
+
+                </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/alarm_details_day_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <com.wecredible.typetowake.CustomSwitch
+                    android:id="@+id/sun_button"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/details_sunday"
+                    android:textOff="@string/details_sunday"/>
+
+                <com.wecredible.typetowake.CustomSwitch
+                    android:id="@+id/mon_button"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/details_monday"
+                    android:textOff="@string/details_monday"
+                    android:layout_toRightOf="@id/sun_button"/>
+
+                <com.wecredible.typetowake.CustomSwitch
+                    android:id="@+id/tue_button"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/details_tuesday"
+                    android:textOff="@string/details_tuesday"
+                    android:layout_toRightOf="@id/mon_button"/>
+
+                <com.wecredible.typetowake.CustomSwitch
+                    android:id="@+id/wed_button"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/details_wednesday"
+                    android:textOff="@string/details_wednesday"
+                    android:layout_toRightOf="@id/tue_button"/>
+
+                <com.wecredible.typetowake.CustomSwitch
+                    android:id="@+id/thu_button"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/details_thursday"
+                    android:textOff="@string/details_thursday"
+                    android:layout_toRightOf="@id/wed_button"/>
+
+                <com.wecredible.typetowake.CustomSwitch
+                    android:id="@+id/fri_button"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/details_friday"
+                    android:textOff="@string/details_friday"
+                    android:layout_toRightOf="@id/thu_button"/>
+
+                <com.wecredible.typetowake.CustomSwitch
+                    android:id="@+id/sat_button"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="wrap_content"
+                    android:textOn="@string/details_saturday"
+                    android:textOff="@string/details_saturday"
+                    android:layout_toRightOf="@id/fri_button"/>
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider4"
+                style="@style/Divider"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/alarm_details_repeat_saturday" />
 
             <TextView
                 android:id="@+id/alarm_label_tone"
@@ -153,6 +208,7 @@
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:text="@string/details_alarm_tone_default"
                 android:textSize="14sp" />
+
         </LinearLayout>
 
         <View
@@ -160,6 +216,16 @@
             style="@style/Divider"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/alarm_ringtone_container" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/saveButton"
+            android:layout_below="@+id/alarm_ringtone_container"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/details_save"/>
+
     </RelativeLayout>
 
 </ScrollView>
